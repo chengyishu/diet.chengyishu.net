@@ -1,0 +1,14 @@
+th:first-child {
+    width: 200px;
+}
+
+.table-responsive-md table {
+    min-width: 500px;
+}
+
+ol {
+    margin-top: 20px;
+    margin-left: 0;
+    padding: 20px 20px 20px 35px;
+    border: 1px solid #dee2e6;
+}

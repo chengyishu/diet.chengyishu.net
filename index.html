@@ -1,0 +1,253 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>减脂备餐 | 当很饿却没有准备饭菜，就是最容易乱吃的时候</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/png">
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="pb-5">
+<br>
+<div class="container py-4">
+    <div class="row mb-2">
+        <div class="col-4">
+            <div class="form-group">
+                <label for="age">年龄<small>（周岁）</small></label>
+                <input type="number" class="form-control" id="age" placeholder="年龄" value="30">
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label for="height">身高<small>（cm）</small></label>
+                <input type="number" class="form-control" id="height" placeholder="身高" value="175">
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label for="weight">体重<small>（kg）</small></label>
+                <input type="number" class="form-control" id="weight" placeholder="体重" value="95">
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label for="carbsIncome">碳水摄入<small>（g/kg·日）</small></label>
+                <input type="number" class="form-control" id="carbsIncome" placeholder="碳水摄入" value="2"
+                       onchange="if(value<2)value=2;if(value>3)value=3">
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label for="proteinIncome">蛋白质摄入<small>（g/kg·日）</small></label>
+                <input type="number" class="form-control" id="proteinIncome" placeholder="蛋白质摄入" value="2"
+                       onchange="if(value<1.5)value=1.5;if(value>2.2)value=2.2">
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label for="calorieDeficit">热量缺口<small>（kcal/日）</small></label>
+                <input type="number" class="form-control" id="calorieDeficit" placeholder="热量缺口" value="500">
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label for="gender">性别<small>（男/女）</small></label>
+                <select class="form-control" id="gender">
+                    <option value="1" selected>男</option>
+                    <option value="0">女</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label for="amount">每次备餐<small>（份）</small></label>
+                <input type="number" class="form-control" id="amount" placeholder="每次备餐" value="6">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <br>
+            <h6>基础数据</h6>
+            <table class="table table-bordered">
+                <tbody>
+                <tr>
+                    <th>BMI</th>
+                    <td id="bmi"></td>
+                </tr>
+                <tr>
+                    <th>基础代谢<small>（kcal/日）</small></th>
+                    <td id="bmr"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-12">
+            <br>
+            <h6>理想数据</h6>
+            <table class="table table-bordered">
+                <tbody>
+                <tr>
+                    <th>体重<small>（kg）</small></th>
+                    <td id="normalWeight"></td>
+                </tr>
+                <tr>
+                    <th>碳水摄入<small>（g/日）</small></th>
+                    <td id="normalCarbs"></td>
+                </tr>
+                <tr>
+                    <th>蛋白质摄入<small>（g/日）</small></th>
+                    <td id="normalProtein"></td>
+                </tr>
+                <tr>
+                    <th>脂肪摄入<small>（g/日）</small></th>
+                    <td id="normalFat"></td>
+                </tr>
+                <tr>
+                    <th>总热量摄入<small>（kcal/日）</small></th>
+                    <td id="normalCalorie"></td>
+                </tr>
+                <tr>
+                    <th>还需运动消耗<small>（kcal/日）</small></th>
+                    <td id="normalBurnOff"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-12">
+            <br>
+            <h6>食材数据</h6>
+            <div class="table-responsive-md">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>名称<small>（每100g含量）</small></th>
+                        <th>碳水</th>
+                        <th>蛋白质</th>
+                        <th>脂肪</th>
+                        <th>总热量</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>鸡胸</td>
+                        <td>2.5g</td>
+                        <td>19.4g</td>
+                        <td>3g</td>
+                        <td>115kcal</td>
+                    </tr>
+                    <tr>
+                        <td>鸡腿肉<small>（去皮去骨）</small></td>
+                        <td>0g</td>
+                        <td>20g</td>
+                        <td>7.2g</td>
+                        <td>145kcal</td>
+                    </tr>
+                    <tr>
+                        <td>牛肉馅</td>
+                        <td>2.7g</td>
+                        <td>16.6g</td>
+                        <td>6.5g</td>
+                        <td>136kcal</td>
+                    </tr>
+                    <tr>
+                        <td>大米</td>
+                        <td>77g</td>
+                        <td>7.9g</td>
+                        <td>0.9g</td>
+                        <td>348kcal</td>
+                    </tr>
+                    <tr>
+                        <td>土豆</td>
+                        <td>17.8g</td>
+                        <td>2.6g</td>
+                        <td>0g</td>
+                        <td>81kcal</td>
+                    </tr>
+                    <tr>
+                        <td>红薯</td>
+                        <td>20g</td>
+                        <td>1.6g</td>
+                        <td>0g</td>
+                        <td>86kcal</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-12">
+            <br>
+            <h6>备物清单</h6>
+            <table class="table table-bordered">
+                <tbody>
+                <tr>
+                    <td>鸡胸肉</td>
+                    <td id="chickenBreast"></td>
+                </tr>
+                <tr>
+                    <td>鸡腿肉</td>
+                    <td id="chickenThighs"></td>
+                </tr>
+                <tr>
+                    <td>牛肉馅</td>
+                    <td id="mimcedBeef"></td>
+                </tr>
+                <tr>
+                    <td>大米</td>
+                    <td id="rice"></td>
+                </tr>
+                <tr>
+                    <td>土豆</td>
+                    <td id="potato"></td>
+                </tr>
+                <tr>
+                    <td>红薯</td>
+                    <td id="sweetPotato"></td>
+                </tr>
+                <tr>
+                    <td>蔬菜</td>
+                    <td>略</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-12">
+            <br>
+            <h6>烹饪制作</h6>
+            <ol>
+                <li>
+                    <p>鸡胸肉切块，加橄榄油、黑胡椒酱、盐、黑胡椒粉、十三香<small>（五香粉）</small>、生抽，抓匀、腌制。
+                </p>
+                    <p>鸡腿肉去皮去骨，切出需重鸡腿肉。</p>
+                    <p>加水稀释奥尔良腌料粉<small>（水:粉:肉的重量比为1:1:20）</small>，加盐、生抽，抓匀、腌制。
+                    </p></li>
+                <li><p>蒸米饭<small>（可以混合黑米或糙米）</small>。重量以生米称重为准。</p>
+                    <p>土豆去皮切块，锅中加水没过土豆，以制备土豆泥。</p>
+                    <p>红薯切厚片，同锅上屉在盘中蒸熟。</p>
+                    <p>水开后转小火，20分钟后即可关火。</p></li>
+                <li><p>配料处理：洋葱切碎丁，小辣椒切段，大蒜切大片，生姜磨末。</p>
+                    <p>调制照烧汁：蜂蜜:酱油=1:1，加点辣椒面、芝麻油、黑胡椒。</p></li>
+                <li><p>锅中一点底油，倒鸡胸炒至变色加水少许，盖上盖子转中小火，等3分钟后出锅。</p>
+                    <p>锅中一点底油，倒洋葱碎爆香，倒鸡腿肉，炒至变色加水加盖，3-5分钟后出锅。</p>
+                    <p>锅中一点底油，倒洋葱碎爆香，倒牛肉馅，加姜末、照烧汁，加盖3分钟后出锅。</p></li>
+                <li><p>蔬菜处理：切小块，锅中一点底油，煎制，加糖、黑胡椒粉，加盖3分钟后出锅。</p>
+                    <p>西蓝花切小朵，锅中放小块儿黄油，将小米椒、蒜片爆香，炒西蓝花，加糖少许。</p></li>
+                <li><p>土豆泥：菠菜切小碎叶，锅中一点底油，爆香蒜片。</p>
+                    <p>放入菠菜翻炒，挑出蒜片，倒入土豆捣碎，加黄油、盐、黑胡椒粉调味，压成泥。</p></li>
+                <li><p>分装：午餐都吃米饭，晚餐吃土豆泥或者红薯（也可以一半一半混装）。</p>
+                    <p>主食平均分好以后，再往每个盒子里，放一份蔬菜、一份肉，3种肉每种都平均分成2份。</p></li>
+            </ol>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="script.js"></script>
+</body>
+</html>
